@@ -22,45 +22,45 @@ if (isset($_POST['form1'])) {
 
 
     // update data into the database
-    $statement = $pdo->prepare("UPDATE tbl_customer SET 
-                            cust_b_name=?, 
-                            cust_b_cname=?, 
-                            cust_b_phone=?, 
-                            cust_b_country=?, 
-                            cust_b_address=?, 
-                            cust_b_city=?, 
-                            cust_b_state=?, 
+    $statement = $pdo->prepare("UPDATE tbl_customer SET
+                            cust_b_name=?,
+                            cust_b_cname=?,
+                            cust_b_phone=?,
+                            cust_b_country=?,
+                            cust_b_address=?,
+                            cust_b_city=?,
+                            cust_b_state=?,
                             cust_b_zip=?,
-                            cust_s_name=?, 
-                            cust_s_cname=?, 
-                            cust_s_phone=?, 
-                            cust_s_country=?, 
-                            cust_s_address=?, 
-                            cust_s_city=?, 
-                            cust_s_state=?, 
-                            cust_s_zip=? 
+                            cust_s_name=?,
+                            cust_s_cname=?,
+                            cust_s_phone=?,
+                            cust_s_country=?,
+                            cust_s_address=?,
+                            cust_s_city=?,
+                            cust_s_state=?,
+                            cust_s_zip=?
 
                             WHERE cust_id=?");
     $statement->execute(array(
                             strip_tags($_POST['cust_b_name']),
                             strip_tags($_POST['cust_b_cname']),
                             strip_tags($_POST['cust_b_phone']),
-                            strip_tags($_POST['cust_b_country']),
+                            101,
                             strip_tags($_POST['cust_b_address']),
-                            strip_tags($_POST['cust_b_city']),
-                            strip_tags($_POST['cust_b_state']),
-                            strip_tags($_POST['cust_b_zip']),
+                            NULL,
+                            NULL,
+                            NULL,
                             strip_tags($_POST['cust_s_name']),
                             strip_tags($_POST['cust_s_cname']),
                             strip_tags($_POST['cust_s_phone']),
-                            strip_tags($_POST['cust_s_country']),
+                            101,
                             strip_tags($_POST['cust_s_address']),
-                            strip_tags($_POST['cust_s_city']),
-                            strip_tags($_POST['cust_s_state']),
-                            strip_tags($_POST['cust_s_zip']),
+                            NULL,
+                            NULL,
+                            NULL,
                             $_SESSION['customer']['cust_id']
-                        ));  
-   
+                        ));
+
     $success_message = LANG_VALUE_122;
 
     $_SESSION['customer']['cust_b_name'] = strip_tags($_POST['cust_b_name']);
@@ -85,8 +85,8 @@ if (isset($_POST['form1'])) {
 
 <div class="page">
     <div class="container">
-        <div class="row">            
-            <div class="col-md-12"> 
+        <div class="row">
+            <div class="col-md-12">
                 <?php require_once('customer-sidebar.php'); ?>
             </div>
             <div class="col-md-12">
@@ -197,7 +197,7 @@ if (isset($_POST['form1'])) {
                         </div>
                         <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_5; ?>" name="form1">
                     </form>
-                </div>                
+                </div>
             </div>
         </div>
     </div>
