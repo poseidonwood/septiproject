@@ -54,7 +54,7 @@ $statement = $pdo->prepare("SELECT
                         WHERE t1.ecat_id=?");
 $statement->execute(array($ecat_id));
 $total = $statement->rowCount();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($result as $row) {
     $ecat_name = $row['ecat_name'];
     $mcat_id = $row['mcat_id'];
@@ -72,33 +72,33 @@ $statement->execute(array($p_total_view,$_REQUEST['id']));
 
 $statement = $pdo->prepare("SELECT * FROM tbl_product_size WHERE p_id=?");
 $statement->execute(array($_REQUEST['id']));
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($result as $row) {
     $size[] = $row['size_id'];
 }
 
 $statement = $pdo->prepare("SELECT * FROM tbl_product_color WHERE p_id=?");
 $statement->execute(array($_REQUEST['id']));
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($result as $row) {
     $color[] = $row['color_id'];
 }
 
 
 if(isset($_POST['form_review'])) {
-    
+
     $statement = $pdo->prepare("SELECT * FROM tbl_rating WHERE p_id=? AND cust_id=?");
     $statement->execute(array($_REQUEST['id'],$_SESSION['customer']['cust_id']));
     $total = $statement->rowCount();
-    
+
     if($total) {
-        $error_message = LANG_VALUE_68; 
+        $error_message = LANG_VALUE_68;
     } else {
         $statement = $pdo->prepare("INSERT INTO tbl_rating (p_id,cust_id,comment,rating) VALUES (?,?,?,?)");
         $statement->execute(array($_REQUEST['id'],$_SESSION['customer']['cust_id'],$_POST['comment'],$_POST['rating']));
-        $success_message = LANG_VALUE_163;    
+        $success_message = LANG_VALUE_163;
     }
-    
+
 }
 
 // Getting the average rating for this product
@@ -109,7 +109,7 @@ $tot_rating = $statement->rowCount();
 if($tot_rating == 0) {
     $avg_rating = 0;
 } else {
-    $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as $row) {
         $t_rating = $t_rating + $row['rating'];
     }
@@ -121,7 +121,7 @@ if(isset($_POST['form_add_to_cart'])) {
 	// getting the currect stock of this product
 	$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
 	$statement->execute(array($_REQUEST['id']));
-	$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
+	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($result as $row) {
 		$current_p_qty = $row['p_qty'];
 	}
@@ -140,21 +140,21 @@ if(isset($_POST['form_add_to_cart'])) {
         $arr_cart_p_current_price = array();
 
         $i=0;
-        foreach($_SESSION['cart_p_id'] as $key => $value) 
+        foreach($_SESSION['cart_p_id'] as $key => $value)
         {
             $i++;
             $arr_cart_p_id[$i] = $value;
         }
 
         $i=0;
-        foreach($_SESSION['cart_size_id'] as $key => $value) 
+        foreach($_SESSION['cart_size_id'] as $key => $value)
         {
             $i++;
             $arr_cart_size_id[$i] = $value;
         }
 
         $i=0;
-        foreach($_SESSION['cart_color_id'] as $key => $value) 
+        foreach($_SESSION['cart_color_id'] as $key => $value)
         {
             $i++;
             $arr_cart_color_id[$i] = $value;
@@ -183,7 +183,7 @@ if(isset($_POST['form_add_to_cart'])) {
         } else {
 
             $i=0;
-            foreach($_SESSION['cart_p_id'] as $key => $res) 
+            foreach($_SESSION['cart_p_id'] as $key => $res)
             {
                 $i++;
             }
@@ -195,7 +195,7 @@ if(isset($_POST['form_add_to_cart'])) {
 
                 $statement = $pdo->prepare("SELECT * FROM tbl_size WHERE size_id=?");
                 $statement->execute(array($size_id));
-                $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+                $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($result as $row) {
                     $size_name = $row['size_name'];
                 }
@@ -203,12 +203,12 @@ if(isset($_POST['form_add_to_cart'])) {
                 $size_id = 0;
                 $size_name = '';
             }
-            
+
             if(isset($_POST['color_id'])) {
                 $color_id = $_POST['color_id'];
                 $statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=?");
                 $statement->execute(array($color_id));
-                $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+                $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($result as $row) {
                     $color_name = $row['color_name'];
                 }
@@ -216,7 +216,7 @@ if(isset($_POST['form_add_to_cart'])) {
                 $color_id = 0;
                 $color_name = '';
             }
-          
+
 
             $_SESSION['cart_p_id'][$new_key] = $_REQUEST['id'];
             $_SESSION['cart_size_id'][$new_key] = $size_id;
@@ -230,7 +230,7 @@ if(isset($_POST['form_add_to_cart'])) {
 
             $success_message1 = 'Product is added to the cart successfully!';
         }
-        
+
     }
     else
     {
@@ -241,7 +241,7 @@ if(isset($_POST['form_add_to_cart'])) {
 
             $statement = $pdo->prepare("SELECT * FROM tbl_size WHERE size_id=?");
             $statement->execute(array($size_id));
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $row) {
                 $size_name = $row['size_name'];
             }
@@ -249,12 +249,12 @@ if(isset($_POST['form_add_to_cart'])) {
             $size_id = 0;
             $size_name = '';
         }
-        
+
         if(isset($_POST['color_id'])) {
             $color_id = $_POST['color_id'];
             $statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=?");
             $statement->execute(array($color_id));
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $row) {
                 $color_name = $row['color_name'];
             }
@@ -262,7 +262,7 @@ if(isset($_POST['form_add_to_cart'])) {
             $color_id = 0;
             $color_name = '';
         }
-        
+
 
         $_SESSION['cart_p_id'][1] = $_REQUEST['id'];
         $_SESSION['cart_size_id'][1] = $size_id;
@@ -313,7 +313,7 @@ if($success_message1 != '') {
 					<div class="row">
 						<div class="col-md-5">
 							<ul class="prod-slider">
-                                
+
 								<li style="background-image: url(assets/uploads/<?php echo $p_featured_photo; ?>);">
                                     <a class="popup" href="assets/uploads/<?php echo $p_featured_photo; ?>"></a>
 								</li>
@@ -362,7 +362,7 @@ if($success_message1 != '') {
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                         ';
-                                    } 
+                                    }
                                     elseif($avg_rating == 2.5) {
                                         echo '
                                             <i class="fa fa-star"></i>
@@ -400,7 +400,7 @@ if($success_message1 != '') {
                                             <?php endif; ?>
                                             <?php
                                         }
-                                    }                                    
+                                    }
                                     ?>
                                 </div>
 							</div>
@@ -453,14 +453,14 @@ if($success_message1 != '') {
                                     <?php endif; ?>
 
                                 </div>
-                                
+
                             </div>
 							<div class="p-price">
                                 <span style="font-size:14px;"><?php echo LANG_VALUE_54; ?></span><br>
                                 <span>
                                     <?php if($p_old_price!=''): ?>
                                         <del><?php echo LANG_VALUE_1; ?><?php echo $p_old_price; ?></del>
-                                    <?php endif; ?> 
+                                    <?php endif; ?>
                                         <?php echo LANG_VALUE_1; ?><?php echo $p_current_price; ?>
                                 </span>
                             </div>
@@ -475,10 +475,10 @@ if($success_message1 != '') {
                                 <input type="submit" value="<?php echo LANG_VALUE_154; ?>" name="form_add_to_cart">
 							</div>
                             </form>
-							<div class="share">
+							<!-- <div class="share">
                                 <?php echo LANG_VALUE_58; ?> <br>
 								<div class="sharethis-inline-share-buttons"></div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 
@@ -543,10 +543,10 @@ if($success_message1 != '') {
 
                                     <div class="review-form">
                                         <?php
-                                        $statement = $pdo->prepare("SELECT * 
-                                                            FROM tbl_rating t1 
-                                                            JOIN tbl_customer t2 
-                                                            ON t1.cust_id = t2.cust_id 
+                                        $statement = $pdo->prepare("SELECT *
+                                                            FROM tbl_rating t1
+                                                            JOIN tbl_customer t2
+                                                            ON t1.cust_id = t2.cust_id
                                                             WHERE t1.p_id=?");
                                         $statement->execute(array($_REQUEST['id']));
                                         $total = $statement->rowCount();
@@ -594,7 +594,7 @@ if($success_message1 != '') {
                                             echo LANG_VALUE_74;
                                         }
                                         ?>
-                                        
+
                                         <h2><?php echo LANG_VALUE_65; ?></h2>
                                         <?php
                                         if($error_message != '') {
@@ -607,7 +607,7 @@ if($success_message1 != '') {
                                         <?php if(isset($_SESSION['customer'])): ?>
 
                                             <?php
-                                            $statement = $pdo->prepare("SELECT * 
+                                            $statement = $pdo->prepare("SELECT *
                                                                 FROM tbl_rating
                                                                 WHERE p_id=? AND cust_id=?");
                                             $statement->execute(array($_REQUEST['id'],$_SESSION['customer']['cust_id']));
@@ -621,7 +621,7 @@ if($success_message1 != '') {
                                                 <input type="radio" name="rating" class="rating" value="3" checked>
                                                 <input type="radio" name="rating" class="rating" value="4" checked>
                                                 <input type="radio" name="rating" class="rating" value="5" checked>
-                                            </div>                                            
+                                            </div>
                                             <div class="form-group">
                                                 <textarea name="comment" class="form-control" cols="30" rows="10" placeholder="Write your comment (optional)" style="height:100px;"></textarea>
                                             </div>
@@ -637,7 +637,7 @@ if($success_message1 != '') {
 												<?php echo LANG_VALUE_69; ?> <br>
 												<a href="login.php" style="color:red;text-decoration: underline;"><?php echo LANG_VALUE_9; ?></a>
 											</p>
-                                        <?php endif; ?>                         
+                                        <?php endif; ?>
                                     </div>
 
 								</div>
@@ -681,7 +681,7 @@ if($success_message1 != '') {
                             <div class="text">
                                 <h3><a href="product.php?id=<?php echo $row['p_id']; ?>"><?php echo $row['p_name']; ?></a></h3>
                                 <h4>
-                                    <?php echo LANG_VALUE_1; ?><?php echo $row['p_current_price']; ?> 
+                                    <?php echo LANG_VALUE_1; ?><?php echo $row['p_current_price']; ?>
                                     <?php if($row['p_old_price'] != ''): ?>
                                     <del>
                                         <?php echo LANG_VALUE_1; ?><?php echo $row['p_old_price']; ?>
@@ -716,7 +716,7 @@ if($success_message1 != '') {
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                         ';
-                                    } 
+                                    }
                                     elseif($avg_rating == 2.5) {
                                         echo '
                                             <i class="fa fa-star"></i>
