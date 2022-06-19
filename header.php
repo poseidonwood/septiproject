@@ -235,10 +235,10 @@ foreach ($result as $row) {
 <body>
 
 	<?php echo $after_body; ?>
-	<!--
+
 <div id="preloader">
 	<div id="status"></div>
-</div>-->
+</div>
 
 	<!-- top bar -->
 	<div class="top">
@@ -279,7 +279,7 @@ foreach ($result as $row) {
 		<div class="container">
 			<div class="row inner">
 				<div class="col-md-4 logo">
-					<a href="index.php"><img src="assets/uploads/<?php echo $logo; ?>" alt="logo image"></a>
+					<a href="index.php" style="color:black"><img src="assets/uploads/<?php echo $logo; ?>" alt="logo image"><strong>LAPAK TEKNIK</strong></a>
 				</div>
 
 				<div class="col-md-5 right">
