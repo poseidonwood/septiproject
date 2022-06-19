@@ -3,7 +3,7 @@
 <?php
 
 if(isset($_POST['form_about'])) {
-    
+
     $valid = 1;
 
     if(empty($_POST['about_title'])) {
@@ -34,7 +34,7 @@ if(isset($_POST['form_about'])) {
             // removing the existing photo
             $statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
             $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $row) {
                 $about_banner = $row['about_banner'];
                 unlink('../assets/uploads/'.$about_banner);
@@ -54,15 +54,15 @@ if(isset($_POST['form_about'])) {
         }
 
         $success_message = 'About Page Information is updated successfully.';
-        
+
     }
-    
+
 }
 
 
 
 if(isset($_POST['form_faq'])) {
-    
+
     $valid = 1;
 
     if(empty($_POST['faq_title'])) {
@@ -88,7 +88,7 @@ if(isset($_POST['form_faq'])) {
             // removing the existing photo
             $statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
             $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $row) {
                 $faq_banner = $row['faq_banner'];
                 unlink('../assets/uploads/'.$faq_banner);
@@ -108,15 +108,15 @@ if(isset($_POST['form_faq'])) {
         }
 
         $success_message = 'FAQ Page Information is updated successfully.';
-        
+
     }
-    
+
 }
 
 
 
 if(isset($_POST['form_contact'])) {
-    
+
     $valid = 1;
 
     if(empty($_POST['contact_title'])) {
@@ -142,7 +142,7 @@ if(isset($_POST['form_contact'])) {
             // removing the existing photo
             $statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
             $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $row) {
                 $contact_banner = $row['contact_banner'];
                 unlink('../assets/uploads/'.$contact_banner);
@@ -162,9 +162,9 @@ if(isset($_POST['form_contact'])) {
         }
 
         $success_message = 'Contact Page Information is updated successfully.';
-        
+
     }
-    
+
 }
 
 
@@ -179,7 +179,7 @@ if(isset($_POST['form_contact'])) {
 <?php
 $statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
 $statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($result as $row) {
     $about_title = $row['about_title'];
     $about_content = $row['about_content'];
@@ -207,7 +207,7 @@ foreach ($result as $row) {
         <div class="col-md-12">
             <?php if($error_message): ?>
             <div class="callout callout-danger">
-            
+
             <p>
             <?php echo $error_message; ?>
             </p>
@@ -216,7 +216,7 @@ foreach ($result as $row) {
 
             <?php if($success_message): ?>
             <div class="callout callout-success">
-            
+
             <p><?php echo $success_message; ?></p>
             </div>
             <?php endif; ?>
@@ -228,12 +228,12 @@ foreach ($result as $row) {
 
     <div class="row">
         <div class="col-md-12">
-                            
+
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">About Us</a></li>
-                        <li><a href="#tab_2" data-toggle="tab">FAQ</a></li>
-                        <li><a href="#tab_4" data-toggle="tab">Contact</a></li>
+                        <!-- <li><a href="#tab_2" data-toggle="tab">FAQ</a></li>
+                        <li><a href="#tab_4" data-toggle="tab">Contact</a></li> -->
 
                     </ul>
 
@@ -273,7 +273,7 @@ foreach ($result as $row) {
                                         <div class="col-sm-8">
                                             <input class="form-control" type="text" name="about_meta_title" value="<?php echo $about_meta_title; ?>">
                                         </div>
-                                    </div>             
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Meta Keyword </label>
                                         <div class="col-sm-8">
@@ -285,7 +285,7 @@ foreach ($result as $row) {
                                         <div class="col-sm-8">
                                             <textarea class="form-control" name="about_meta_description" style="height:100px;"><?php echo $about_meta_description; ?></textarea>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-6">
@@ -326,7 +326,7 @@ foreach ($result as $row) {
                                         <div class="col-sm-8">
                                             <input class="form-control" type="text" name="faq_meta_title" value="<?php echo $faq_meta_title; ?>">
                                         </div>
-                                    </div>             
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Meta Keyword </label>
                                         <div class="col-sm-8">
@@ -338,7 +338,7 @@ foreach ($result as $row) {
                                         <div class="col-sm-8">
                                             <textarea class="form-control" name="faq_meta_description" style="height:100px;"><?php echo $faq_meta_description; ?></textarea>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-6">
@@ -379,7 +379,7 @@ foreach ($result as $row) {
                                         <div class="col-sm-8">
                                             <input class="form-control" type="text" name="contact_meta_title" value="<?php echo $contact_meta_title; ?>">
                                         </div>
-                                    </div>             
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Meta Keyword </label>
                                         <div class="col-sm-8">
@@ -391,7 +391,7 @@ foreach ($result as $row) {
                                         <div class="col-sm-8">
                                             <textarea class="form-control" name="contact_meta_description" style="height:100px;"><?php echo $contact_meta_description; ?></textarea>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-6">
@@ -405,7 +405,7 @@ foreach ($result as $row) {
 
 
 
-                
+
 
             </form>
         </div>

@@ -26,13 +26,13 @@
 						<tbody>
 							<?php
 							$i=0;
-							$statement = $pdo->prepare("SELECT * 
+							$statement = $pdo->prepare("SELECT *
 														FROM tbl_customer t1
 														JOIN tbl_country t2
-														ON t1.cust_country = t2.country_id
+														ON t1.cust_country = t2.country_id order by t1.cust_datetime DESC
 													");
 							$statement->execute();
-							$result = $statement->fetchAll(PDO::FETCH_ASSOC);						
+							$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 							foreach ($result as $row) {
 								$i++;
 								?>
@@ -55,7 +55,7 @@
 								</tr>
 								<?php
 							}
-							?>							
+							?>
 						</tbody>
 					</table>
 				</div>

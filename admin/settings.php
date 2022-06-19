@@ -24,7 +24,7 @@ if(isset($_POST['form1'])) {
         // removing the existing photo
         $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $logo = $row['logo'];
             unlink('../assets/uploads/'.$logo);
@@ -39,7 +39,7 @@ if(isset($_POST['form1'])) {
         $statement->execute(array($final_name));
 
         $success_message = 'Logo is updated successfully.';
-        
+
     }
 }
 // Change Favicon
@@ -65,7 +65,7 @@ if(isset($_POST['form2'])) {
         // removing the existing photo
         $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $favicon = $row['favicon'];
             unlink('../assets/uploads/'.$favicon);
@@ -80,18 +80,18 @@ if(isset($_POST['form2'])) {
         $statement->execute(array($final_name));
 
         $success_message = 'Favicon is updated successfully.';
-        
+
     }
 }
 //Footer & Contact us page
 if(isset($_POST['form3'])) {
-    
+
     // updating the database
     $statement = $pdo->prepare("UPDATE tbl_settings SET newsletter_on_off=?, footer_copyright=?, contact_address=?, contact_email=?, contact_phone=?, contact_map_iframe=? WHERE id=1");
     $statement->execute(array($_POST['newsletter_on_off'],$_POST['footer_copyright'],$_POST['contact_address'],$_POST['contact_email'],$_POST['contact_phone'],$_POST['contact_map_iframe']));
 
     $success_message = 'General content settings is updated successfully.';
-    
+
 }
 //Email Settings
 if(isset($_POST['form4'])) {
@@ -171,7 +171,7 @@ if(isset($_POST['form6_7'])) {
             // removing the existing photo
             $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
             $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $row) {
                 $cta_photo = $row['cta_photo'];
                 unlink('../assets/uploads/'.$cta_photo);
@@ -191,7 +191,7 @@ if(isset($_POST['form6_7'])) {
         }
 
         $success_message = 'Call to Action Data is updated successfully.';
-        
+
     }
 }
 
@@ -216,7 +216,7 @@ if(isset($_POST['form6_4'])) {
         $statement->execute(array($_POST['featured_product_title'],$_POST['featured_product_subtitle']));
 
         $success_message = 'Featured Product Data is updated successfully.';
-        
+
     }
 }
 
@@ -241,7 +241,7 @@ if(isset($_POST['form6_5'])) {
         $statement->execute(array($_POST['latest_product_title'],$_POST['latest_product_subtitle']));
 
         $success_message = 'Latest Product Data is updated successfully.';
-        
+
     }
 }
 
@@ -266,7 +266,7 @@ if(isset($_POST['form6_6'])) {
         $statement->execute(array($_POST['popular_product_title'],$_POST['popular_product_subtitle']));
 
         $success_message = 'Popular Product Data is updated successfully.';
-        
+
     }
 }
 /*
@@ -303,7 +303,7 @@ if(isset($_POST['form6_1'])) {
             // removing the existing photo
             $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
             $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as $row) {
                 $testimonial_photo = $row['testimonial_photo'];
                 unlink('../assets/uploads/'.$testimonial_photo);
@@ -323,7 +323,7 @@ if(isset($_POST['form6_1'])) {
         }
 
         $success_message = 'Testimonial Data is updated successfully.';
-        
+
     }
 }
 
@@ -349,7 +349,7 @@ if(isset($_POST['form6_2'])) {
         $statement->execute(array($_POST['blog_title'],$_POST['blog_subtitle']));
 
         $success_message = 'Blog Data is updated successfully.';
-        
+
     }
 }
 */
@@ -359,9 +359,9 @@ if(isset($_POST['form6_3'])) {
         // updating the database
         $statement = $pdo->prepare("UPDATE tbl_settings SET newsletter_text=? WHERE id=1");
         $statement->execute(array($_POST['newsletter_text']));
-        
+
         $success_message = 'Newsletter Text is updated successfully.';
- 
+
 }
 
 if(isset($_POST['form7_1'])) {
@@ -386,7 +386,7 @@ if(isset($_POST['form7_1'])) {
         // removing the existing photo
         $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $banner_login = $row['banner_login'];
             unlink('../assets/uploads/'.$banner_login);
@@ -401,7 +401,7 @@ if(isset($_POST['form7_1'])) {
         $statement->execute(array($final_name));
 
         $success_message = 'Login Page Banner is updated successfully.';
-        
+
     }
 }
 
@@ -427,7 +427,7 @@ if(isset($_POST['form7_2'])) {
         // removing the existing photo
         $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $banner_registration = $row['banner_registration'];
             unlink('../assets/uploads/'.$banner_registration);
@@ -442,7 +442,7 @@ if(isset($_POST['form7_2'])) {
         $statement->execute(array($final_name));
 
         $success_message = 'Registration Page Banner is updated successfully.';
-        
+
     }
 }
 
@@ -468,7 +468,7 @@ if(isset($_POST['form7_3'])) {
         // removing the existing photo
         $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $banner_forget_password = $row['banner_forget_password'];
             unlink('../assets/uploads/'.$banner_forget_password);
@@ -483,7 +483,7 @@ if(isset($_POST['form7_3'])) {
         $statement->execute(array($final_name));
 
         $success_message = 'Forget Password Page Banner is updated successfully.';
-        
+
     }
 }
 
@@ -509,7 +509,7 @@ if(isset($_POST['form7_4'])) {
         // removing the existing photo
         $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $banner_reset_password = $row['banner_reset_password'];
             unlink('../assets/uploads/'.$banner_reset_password);
@@ -524,7 +524,7 @@ if(isset($_POST['form7_4'])) {
         $statement->execute(array($final_name));
 
         $success_message = 'Reset Password Page Banner is updated successfully.';
-        
+
     }
 }
 
@@ -551,7 +551,7 @@ if(isset($_POST['form7_6'])) {
         // removing the existing photo
         $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $banner_search = $row['banner_search'];
             unlink('../assets/uploads/'.$banner_search);
@@ -566,7 +566,7 @@ if(isset($_POST['form7_6'])) {
         $statement->execute(array($final_name));
 
         $success_message = 'Search Page Banner is updated successfully.';
-        
+
     }
 }
 
@@ -592,7 +592,7 @@ if(isset($_POST['form7_7'])) {
         // removing the existing photo
         $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $banner_cart = $row['banner_cart'];
             unlink('../assets/uploads/'.$banner_cart);
@@ -607,7 +607,7 @@ if(isset($_POST['form7_7'])) {
         $statement->execute(array($final_name));
 
         $success_message = 'Cart Page Banner is updated successfully.';
-        
+
     }
 }
 
@@ -633,7 +633,7 @@ if(isset($_POST['form7_8'])) {
         // removing the existing photo
         $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $banner_checkout = $row['banner_checkout'];
             unlink('../assets/uploads/'.$banner_checkout);
@@ -648,7 +648,7 @@ if(isset($_POST['form7_8'])) {
         $statement->execute(array($final_name));
 
         $success_message = 'Checkout Page Banner is updated successfully.';
-        
+
     }
 }
 
@@ -674,7 +674,7 @@ if(isset($_POST['form7_9'])) {
         // removing the existing photo
         $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $banner_product_category = $row['banner_product_category'];
             unlink('../assets/uploads/'.$banner_product_category);
@@ -689,7 +689,7 @@ if(isset($_POST['form7_9'])) {
         $statement->execute(array($final_name));
 
         $success_message = 'Product Category Page Banner is updated successfully.';
-        
+
     }
 }
 
@@ -715,7 +715,7 @@ if(isset($_POST['form7_10'])) {
         // removing the existing photo
         $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $banner_blog = $row['banner_blog'];
             unlink('../assets/uploads/'.$banner_blog);
@@ -730,7 +730,7 @@ if(isset($_POST['form7_10'])) {
         $statement->execute(array($final_name));
 
         $success_message = 'Blog Page Banner is updated successfully.';
-        
+
     } */
 }
 
@@ -753,14 +753,14 @@ if(isset($_POST['form10'])) {
 /*
 if(isset($_POST['form11'])) {
     // updating the database
-    $statement = $pdo->prepare("UPDATE tbl_settings 
-    						SET 
-    						ads_above_welcome_on_off=?, 
-    						ads_above_featured_product_on_off=?, 
-    						ads_above_latest_product_on_off=?, 
-    						ads_above_popular_product_on_off=?, 
-    						ads_above_testimonial_on_off=?, 
-    						ads_category_sidebar_on_off=? 
+    $statement = $pdo->prepare("UPDATE tbl_settings
+    						SET
+    						ads_above_welcome_on_off=?,
+    						ads_above_featured_product_on_off=?,
+    						ads_above_latest_product_on_off=?,
+    						ads_above_popular_product_on_off=?,
+    						ads_above_testimonial_on_off=?,
+    						ads_category_sidebar_on_off=?
 
     						WHERE id=1");
     $statement->execute(array(
@@ -785,7 +785,7 @@ if(isset($_POST['form11'])) {
 <?php
 $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
 $statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);                           
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 foreach ($result as $row) {
     $logo                            = $row['logo'];
     $favicon                         = $row['favicon'];
@@ -866,7 +866,7 @@ foreach ($result as $row) {
         <div class="col-md-12">
             <?php if($error_message): ?>
             <div class="callout callout-danger">
-            
+
             <p>
             <?php echo $error_message; ?>
             </p>
@@ -875,7 +875,7 @@ foreach ($result as $row) {
 
             <?php if($success_message): ?>
             <div class="callout callout-success">
-            
+
             <p><?php echo $success_message; ?></p>
             </div>
             <?php endif; ?>
@@ -887,18 +887,18 @@ foreach ($result as $row) {
 
     <div class="row">
         <div class="col-md-12">
-                            
+
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab">Logo</a></li>
                         <li><a href="#tab_2" data-toggle="tab">Favicon</a></li>
                         <li><a href="#tab_3" data-toggle="tab">Footer & Contact</a></li>
-                        <li><a href="#tab_4" data-toggle="tab">Message Settings</a></li>
-                        <li><a href="#tab_5" data-toggle="tab">Products</a></li>
-                        <li><a href="#tab_6" data-toggle="tab">Home Settings</a></li>
+                        <!-- <li><a href="#tab_4" data-toggle="tab">Message Settings</a></li> -->
+                        <!-- <li><a href="#tab_5" data-toggle="tab">Products</a></li> -->
+                        <!-- <li><a href="#tab_6" data-toggle="tab">Home Settings</a></li> -->
                         <li><a href="#tab_7" data-toggle="tab">Banner Settings</a></li>
                         <li><a href="#tab_9" data-toggle="tab">Payment Settings</a></li>
-                        <li><a href="#tab_10" data-toggle="tab">Head & Body Scripts</a></li>
+                        <!-- <li><a href="#tab_10" data-toggle="tab">Head & Body Scripts</a></li> -->
                        <!--<li><a href="#tab_11" data-toggle="tab">Ads</a></li>-->
                     </ul>
                     <div class="tab-content">
@@ -930,7 +930,7 @@ foreach ($result as $row) {
                             </div>
                             </form>
 
-                            
+
 
 
                         </div>
@@ -983,7 +983,7 @@ foreach ($result as $row) {
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="footer_copyright" value="<?php echo $footer_copyright; ?>">
                                         </div>
-                                    </div>                              
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-2 control-label">Contact Address </label>
                                         <div class="col-sm-6">
@@ -1037,7 +1037,7 @@ foreach ($result as $row) {
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" name="receive_email" value="<?php echo $receive_email; ?>">
                                         </div>
-                                    </div>                                  
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Contact Email Subject</label>
                                         <div class="col-sm-8">
@@ -1079,7 +1079,7 @@ foreach ($result as $row) {
                                         <div class="col-sm-2">
                                             <input type="text" class="form-control" name="total_recent_post_footer" value="<?php echo $total_recent_post_footer; ?>">
                                         </div>
-                                    </div>      
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-4 control-label">Footer (How many popular posts?)<span>*</span></label>
                                         <div class="col-sm-2">
@@ -1147,7 +1147,7 @@ foreach ($result as $row) {
                                             	<option value="0" <?php if($home_service_on_off == 0) {echo 'selected';} ?>>Off</option>
                                             </select>
                                         </div>
-                                    </div>      
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Welcome Section </label>
                                         <div class="col-sm-4">
@@ -1202,7 +1202,7 @@ foreach ($result as $row) {
                                             </select>
                                         </div>
                                     </div>-->
-                                    
+
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-6">
@@ -1213,7 +1213,7 @@ foreach ($result as $row) {
                             </div>
                             </form>
 
-                            
+
                             <h3>Meta Section</h3>
                             <form class="form-horizontal" action="" method="post">
                             <div class="box box-info">
@@ -1223,19 +1223,19 @@ foreach ($result as $row) {
                                         <div class="col-sm-8">
                                             <input type="text" name="meta_title_home" class="form-control" value="<?php echo $meta_title_home ?>">
                                         </div>
-                                    </div>      
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Meta Keyword </label>
                                         <div class="col-sm-8">
                                             <textarea class="form-control" name="meta_keyword_home" style="height:100px;"><?php echo $meta_keyword_home ?></textarea>
                                         </div>
-                                    </div>  
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Meta Description </label>
                                         <div class="col-sm-8">
                                             <textarea class="form-control" name="meta_description_home" style="height:200px;"><?php echo $meta_description_home ?></textarea>
                                         </div>
-                                    </div>  
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-6">
@@ -1251,7 +1251,7 @@ foreach ($result as $row) {
                            <!-- <h3>Call to Action Section</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
-                                <div class="box-body">                                          
+                                <div class="box-body">
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Title<span>*</span></label>
                                         <div class="col-sm-8">
@@ -1305,7 +1305,7 @@ foreach ($result as $row) {
                             <h3>Featured Product Section</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
-                                <div class="box-body">                                          
+                                <div class="box-body">
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Featured Product Title<span>*</span></label>
                                         <div class="col-sm-8">
@@ -1332,7 +1332,7 @@ foreach ($result as $row) {
                             <h3>Latest Product Section</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
-                                <div class="box-body">                                          
+                                <div class="box-body">
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Latest Product Title<span>*</span></label>
                                         <div class="col-sm-8">
@@ -1359,7 +1359,7 @@ foreach ($result as $row) {
                             <h3>Popular Product Section</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
-                                <div class="box-body">                                          
+                                <div class="box-body">
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Popular Product Title<span>*</span></label>
                                         <div class="col-sm-8">
@@ -1387,7 +1387,7 @@ foreach ($result as $row) {
                             <h3>Testimonial Section</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
-                                <div class="box-body">                                          
+                                <div class="box-body">
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Testimonial Section Title<span>*</span></label>
                                         <div class="col-sm-8">
@@ -1426,7 +1426,7 @@ foreach ($result as $row) {
                             <h3>Blog Section</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
-                                <div class="box-body">                                          
+                                <div class="box-body">
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Blog Section Title<span>*</span></label>
                                         <div class="col-sm-8">
@@ -1450,12 +1450,12 @@ foreach ($result as $row) {
                             </form>
 
                                     -->
-                            
+
 
                             <h3>Newsletter Section</h3>
                             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                             <div class="box box-info">
-                                <div class="box-body">                                          
+                                <div class="box-body">
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Newsletter Text</label>
                                         <div class="col-sm-8">
@@ -1485,8 +1485,8 @@ foreach ($result as $row) {
                                     <td style="width:50%">
                                         <h4>Existing Login Page Banner</h4>
                                         <p>
-                                            <img src="<?php echo '../assets/uploads/'.$banner_login; ?>" alt="" style="width: 100%;height:auto;"> 
-                                        </p>                                        
+                                            <img src="<?php echo '../assets/uploads/'.$banner_login; ?>" alt="" style="width: 100%;height:auto;">
+                                        </p>
                                     </td>
                                     <td style="width:50%">
                                         <h4>Change Login Page Banner</h4>
@@ -1500,8 +1500,8 @@ foreach ($result as $row) {
                                     <td style="width:50%">
                                         <h4>Existing Registration Page Banner</h4>
                                         <p>
-                                            <img src="<?php echo '../assets/uploads/'.$banner_registration; ?>" alt="" style="width: 100%;height:auto;">  
-                                        </p>                                        
+                                            <img src="<?php echo '../assets/uploads/'.$banner_registration; ?>" alt="" style="width: 100%;height:auto;">
+                                        </p>
                                     </td>
                                     <td style="width:50%">
                                         <h4>Change Registration Page Banner</h4>
@@ -1515,8 +1515,8 @@ foreach ($result as $row) {
                                     <td style="width:50%">
                                         <h4>Existing Forget Password Page Banner</h4>
                                         <p>
-                                            <img src="<?php echo '../assets/uploads/'.$banner_forget_password; ?>" alt="" style="width: 100%;height:auto;">   
-                                        </p>                                        
+                                            <img src="<?php echo '../assets/uploads/'.$banner_forget_password; ?>" alt="" style="width: 100%;height:auto;">
+                                        </p>
                                     </td>
                                     <td style="width:50%">
                                         <h4>Change Forget Password Page Banner</h4>
@@ -1530,8 +1530,8 @@ foreach ($result as $row) {
                                     <td style="width:50%">
                                         <h4>Existing Reset Password Page Banner</h4>
                                         <p>
-                                            <img src="<?php echo '../assets/uploads/'.$banner_reset_password; ?>" alt="" style="width: 100%;height:auto;">   
-                                        </p>                                        
+                                            <img src="<?php echo '../assets/uploads/'.$banner_reset_password; ?>" alt="" style="width: 100%;height:auto;">
+                                        </p>
                                     </td>
                                     <td style="width:50%">
                                         <h4>Change Reset Password Page Banner</h4>
@@ -1540,14 +1540,14 @@ foreach ($result as $row) {
                                     </td>
                                     </form>
                                 </tr>
-                                
+
                                 <tr>
                                     <form action="" method="post" enctype="multipart/form-data">
                                     <td style="width:50%">
                                         <h4>Existing Search Page Banner</h4>
                                         <p>
-                                            <img src="<?php echo '../assets/uploads/'.$banner_search; ?>" alt="" style="width: 100%;height:auto;">  
-                                        </p>                                        
+                                            <img src="<?php echo '../assets/uploads/'.$banner_search; ?>" alt="" style="width: 100%;height:auto;">
+                                        </p>
                                     </td>
                                     <td style="width:50%">
                                         <h4>Change Search Page Banner</h4>
@@ -1563,8 +1563,8 @@ foreach ($result as $row) {
                                     <td style="width:50%">
                                         <h4>Existing Cart Page Banner</h4>
                                         <p>
-                                            <img src="<?php echo '../assets/uploads/'.$banner_cart; ?>" alt="" style="width: 100%;height:auto;">  
-                                        </p>                                        
+                                            <img src="<?php echo '../assets/uploads/'.$banner_cart; ?>" alt="" style="width: 100%;height:auto;">
+                                        </p>
                                     </td>
                                     <td style="width:50%">
                                         <h4>Change Cart Page Banner</h4>
@@ -1580,8 +1580,8 @@ foreach ($result as $row) {
                                     <td style="width:50%">
                                         <h4>Existing Checkout Page Banner</h4>
                                         <p>
-                                            <img src="<?php echo '../assets/uploads/'.$banner_checkout; ?>" alt="" style="width: 100%;height:auto;">  
-                                        </p>                                        
+                                            <img src="<?php echo '../assets/uploads/'.$banner_checkout; ?>" alt="" style="width: 100%;height:auto;">
+                                        </p>
                                     </td>
                                     <td style="width:50%">
                                         <h4>Change Checkout Page Banner</h4>
@@ -1596,8 +1596,8 @@ foreach ($result as $row) {
                                     <td style="width:50%">
                                         <h4>Existing Product Category Page Banner</h4>
                                         <p>
-                                            <img src="<?php echo '../assets/uploads/'.$banner_product_category; ?>" alt="" style="width: 100%;height:auto;">  
-                                        </p>                                        
+                                            <img src="<?php echo '../assets/uploads/'.$banner_product_category; ?>" alt="" style="width: 100%;height:auto;">
+                                        </p>
                                     </td>
                                     <td style="width:50%">
                                         <h4>Change Product Category Page Banner</h4>
@@ -1612,8 +1612,8 @@ foreach ($result as $row) {
                                     <td style="width:50%">
                                         <h4>Existing Blog Page Banner</h4>
                                         <p>
-                                            <img src="<?php echo '../assets/uploads/'.$banner_blog; ?>" alt="" style="width: 100%;height:auto;">  
-                                        </p>                                        
+                                            <img src="<?php echo '../assets/uploads/'.$banner_blog; ?>" alt="" style="width: 100%;height:auto;">
+                                        </p>
                                     </td>
                                     <td style="width:50%">
                                         <h4>Change Blog Page Banner</h4>
@@ -1628,7 +1628,7 @@ foreach ($result as $row) {
 
 
 
-                    
+
 <!-- PAYMENT METHODS TAB -->
 
 
@@ -1721,7 +1721,7 @@ foreach ($result as $row) {
                                             	<option value="0" <?php if($ads_above_welcome_on_off == 0) {echo 'selected';} ?>>Off</option>
                                             </select>
                                         </div>
-                                    </div>      
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label">Above Featured Product </label>
                                         <div class="col-sm-4">
@@ -1766,7 +1766,7 @@ foreach ($result as $row) {
                                             	<option value="0" <?php if($ads_category_sidebar_on_off == 0) {echo 'selected';} ?>>Off</option>
                                             </select>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                     <div class="form-group">
                                         <label for="" class="col-sm-3 control-label"></label>
                                         <div class="col-sm-6">
@@ -1783,7 +1783,7 @@ foreach ($result as $row) {
                     </div>
                 </div>
 
-                
+
 
             </form>
         </div>
