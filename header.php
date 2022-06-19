@@ -226,7 +226,7 @@ foreach ($result as $row) {
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
-	<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script>
+	<!-- <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script> -->
 
 	<?php echo $before_head; ?>
 
@@ -343,7 +343,7 @@ foreach ($result as $row) {
 					<div class="menu-container">
 						<div class="menu">
 							<ul>
-								<li><a href="index.php">Home</a></li>
+								<li><a href="index.php">HOME</a></li>
 
 								<?php
 								$statement = $pdo->prepare("SELECT * FROM tbl_top_category WHERE show_on_menu=1");
@@ -397,9 +397,9 @@ foreach ($result as $row) {
 								?>
 
 								<li><a href="about.php"><?php echo $about_title; ?></a></li>
-								<li><a href="faq.php"><?php echo $faq_title; ?></a></li>
+								<!--<li><a href="faq.php"><?php echo $faq_title; ?></a></li>
 
-								<li><a href="contact.php"><?php echo $contact_title; ?></a></li>
+								<li><a href="contact.php"><?php echo $contact_title; ?></a></li>-->
 							</ul>
 						</div>
 					</div>

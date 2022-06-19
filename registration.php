@@ -47,25 +47,25 @@ if (isset($_POST['form1'])) {
         $error_message .= LANG_VALUE_125 . "<br>";
     }
 
-    if (empty($_POST['cust_country'])) {
-        $valid = 0;
-        $error_message .= LANG_VALUE_126 . "<br>";
-    }
+    // if (empty($_POST['cust_country'])) {
+    //     $valid = 0;
+    //     $error_message .= LANG_VALUE_126 . "<br>";
+    // }
 
-    if (empty($_POST['cust_city'])) {
-        $valid = 0;
-        $error_message .= LANG_VALUE_127 . "<br>";
-    }
+    // if (empty($_POST['cust_city'])) {
+    //     $valid = 0;
+    //     $error_message .= LANG_VALUE_127 . "<br>";
+    // }
 
-    if (empty($_POST['cust_state'])) {
-        $valid = 0;
-        $error_message .= LANG_VALUE_128 . "<br>";
-    }
+    // if (empty($_POST['cust_state'])) {
+    //     $valid = 0;
+    //     $error_message .= LANG_VALUE_128 . "<br>";
+    // }
 
-    if (empty($_POST['cust_zip'])) {
-        $valid = 0;
-        $error_message .= LANG_VALUE_129 . "<br>";
-    }
+    // if (empty($_POST['cust_zip'])) {
+    //     $valid = 0;
+    //     $error_message .= LANG_VALUE_129 . "<br>";
+    // }
 
     if (empty($_POST['cust_password']) || empty($_POST['cust_re_password'])) {
         $valid = 0;
@@ -124,11 +124,11 @@ if (isset($_POST['form1'])) {
             strip_tags($_POST['cust_cname']),
             strip_tags($_POST['cust_email']),
             strip_tags($_POST['cust_phone']),
-            strip_tags($_POST['cust_country']),
+            101,
             strip_tags($_POST['cust_address']),
-            strip_tags($_POST['cust_city']),
-            strip_tags($_POST['cust_state']),
-            strip_tags($_POST['cust_zip']),
+            NULL,
+            NULL,
+            NULL,
             '',
             '',
             '',
@@ -244,7 +244,7 @@ if (isset($_POST['form1'])) {
                                                                                                                                     echo $_POST['cust_address'];
                                                                                                                                 } ?></textarea>
                                 </div>
-                                <div class="col-md-6 form-group">
+                              <!--  <div class="col-md-6 form-group">
                                     <label for=""><?php echo LANG_VALUE_106; ?> *</label>
                                     <select name="cust_country" class="form-control select2">
                                         <option value="">Select country</option>
@@ -278,7 +278,7 @@ if (isset($_POST['form1'])) {
                                     <input type="text" class="form-control" name="cust_zip" value="<?php if (isset($_POST['cust_zip'])) {
                                                                                                         echo $_POST['cust_zip'];
                                                                                                     } ?>">
-                                </div>
+                                </div>-->
                                 <div class="col-md-6 form-group">
                                     <label for=""><?php echo LANG_VALUE_96; ?> *</label>
                                     <input type="password" class="form-control" name="cust_password">
