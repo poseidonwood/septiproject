@@ -449,6 +449,10 @@ if ($success_message1 != '') {
                                     </div>
 
                                 </div>
+                                <div class="p-quantity">
+                                    <?php echo LANG_VALUE_55 . " ( $p_qty item)"; ?> <br>
+                                    <input type="number" class="input-text qty" step="1" min="1" max="" name="p_qty" value="1" title="Qty" size="4" pattern="[0-9]*" onkeyup="checkstok(this.value,<?= $p_qty ?>)" id='stokdata' inputmode="numeric">
+                                </div>
                                 <div class="p-price">
                                     <span style="font-size:14px;"><?php echo LANG_VALUE_54; ?></span><br>
                                     <span>
@@ -461,10 +465,8 @@ if ($success_message1 != '') {
                                 <input type="hidden" name="p_current_price" value="<?php echo $p_current_price; ?>">
                                 <input type="hidden" name="p_name" value="<?php echo $p_name; ?>">
                                 <input type="hidden" name="p_featured_photo" value="<?php echo $p_featured_photo; ?>">
-                                <div class="p-quantity">
-                                    <?php echo LANG_VALUE_55 . " ( $p_qty item)"; ?> <br>
-                                    <input type="number" class="input-text qty" step="1" min="1" max="" name="p_qty" value="1" title="Qty" size="4" pattern="[0-9]*" onkeyup="checkstok(this.value,<?= $p_qty ?>)" id='stokdata' inputmode="numeric">
-                                </div>
+                                
+
                                 <div class="btn-cart btn-cart1">
                                     <input type="submit" value="<?php echo LANG_VALUE_154; ?>" name="form_add_to_cart">
                                 </div>
