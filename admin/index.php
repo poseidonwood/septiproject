@@ -108,36 +108,36 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 			</div>
 		</div>
 		<!-- ./col -->
-		<!-- <div class="col-lg-3 col-xs-6">
+		<div class="col-lg-3 col-xs-6">
 
-              <div class="small-box bg-aqua">
-                <div class="inner">
-                  <h3><?php echo $total_shipping_completed; ?></h3>
+			<div class="small-box bg-aqua">
+				<div class="inner">
+					<h3><?php echo $total_shipping_completed; ?></h3>
 
-                  <p>Completed Shipping</p>
-                </div>
-                <div class="icon">
-                  <i class="ionicons ion-checkmark-circled"></i>
-                </div>
+					<p>Completed Shipping</p>
+				</div>
+				<div class="icon">
+					<i class="ionicons ion-checkmark-circled"></i>
+				</div>
 
-              </div>
-			</div>-->
+			</div>
+		</div>
 		<!-- ./col -->
 
-		<!-- <div class="col-lg-3 col-xs-6">
+		<div class="col-lg-3 col-xs-6">
 
 			<div class="small-box bg-orange">
-					<div class="inner">
-						<h3><?php echo $total_order_complete_shipping_pending; ?></h3>
+				<div class="inner">
+					<h3><?php echo $total_order_complete_shipping_pending; ?></h3>
 
-						<p>Pending Shippings</p>
-					</div>
-					<div class="icon">
-						<i class="ionicons ion-load-a"></i>
-					</div>
-
+					<p>Pending Shippings</p>
 				</div>
-		</div> -->
+				<div class="icon">
+					<i class="ionicons ion-load-a"></i>
+				</div>
+
+			</div>
+		</div>
 
 		<div class="col-lg-3 col-xs-6">
 
@@ -154,35 +154,35 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 			</div>
 		</div>
 
-		<!-- <div class="col-lg-3 col-xs-6">
+		<div class="col-lg-3 col-xs-6">
 
 			<div class="small-box bg-yellow">
-				  <div class="inner">
+				<div class="inner">
 					<h3><?php echo $total_subscriber; ?></h3>
 
 					<p>Subscriber</p>
-				  </div>
-				  <div class="icon">
-					<i class="ionicons ion-person-add"></i>
-				  </div>
-
 				</div>
-		</div> -->
+				<div class="icon">
+					<i class="ionicons ion-person-add"></i>
+				</div>
 
-		<!-- <div class="col-lg-3 col-xs-6">
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-xs-6">
 
 			<div class="small-box bg-teal">
-				  <div class="inner">
+				<div class="inner">
 					<h3><?php echo $available_shipping; ?></h3>
 
 					<p>Available Shippings</p>
-				  </div>
-				  <div class="icon">
-					<i class="ionicons ion-location"></i>
-				  </div>
-
 				</div>
-		</div> -->
+				<div class="icon">
+					<i class="ionicons ion-location"></i>
+				</div>
+
+			</div>
+		</div>
 
 		<div class="col-lg-3 col-xs-6">
 
