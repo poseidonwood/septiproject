@@ -124,9 +124,9 @@ $total_order_complete_shipping_pending = $statement->rowCount();
             </div> -->
 		<!-- ./col -->
 
-		<div class="col-lg-3 col-xs-6">
+		<!-- <div class="col-lg-3 col-xs-6">
 
-			<!-- <div class="small-box bg-orange">
+			<div class="small-box bg-orange">
 					<div class="inner">
 						<h3><?php echo $total_order_complete_shipping_pending; ?></h3>
 
@@ -136,8 +136,8 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 						<i class="ionicons ion-load-a"></i>
 					</div>
 
-				</div> -->
-		</div>
+				</div>
+		</div> -->
 
 		<div class="col-lg-3 col-xs-6">
 
@@ -154,9 +154,9 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 			</div>
 		</div>
 
-		<div class="col-lg-3 col-xs-6">
+		<!-- <div class="col-lg-3 col-xs-6">
 
-			<!-- <div class="small-box bg-yellow">
+			<div class="small-box bg-yellow">
 				  <div class="inner">
 					<h3><?php echo $total_subscriber; ?></h3>
 
@@ -166,12 +166,12 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 					<i class="ionicons ion-person-add"></i>
 				  </div>
 
-				</div> -->
-		</div>
+				</div>
+		</div> -->
 
-		<div class="col-lg-3 col-xs-6">
+		<!-- <div class="col-lg-3 col-xs-6">
 
-			<!-- <div class="small-box bg-teal">
+			<div class="small-box bg-teal">
 				  <div class="inner">
 					<h3><?php echo $available_shipping; ?></h3>
 
@@ -181,8 +181,8 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 					<i class="ionicons ion-location"></i>
 				  </div>
 
-				</div> -->
-		</div>
+				</div>
+		</div> -->
 
 		<div class="col-lg-3 col-xs-6">
 
