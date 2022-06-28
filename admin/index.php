@@ -86,7 +86,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				<div class="inner">
 					<h3><?php echo $total_order_pending; ?></h3>
 
-					<p>Pending Orders</p>
+					<p>Order Masuk</p>
 				</div>
 				<div class="icon">
 					<i class="ionicons ion-clipboard"></i>
@@ -101,7 +101,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				<div class="inner">
 					<h3><?php echo $total_order_completed; ?></h3>
 
-					<p>Completed Orders</p>
+					<p>Order Selesai</p>
 				</div>
 				<div class="icon">
 					<i class="ionicons ion-android-checkbox-outline"></i>
@@ -110,7 +110,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 			</div>
 		</div>
 		<!-- ./col -->
-		<div class="col-lg-3 col-xs-6">
+		<!-- <div class="col-lg-3 col-xs-6">
 
 			<div class="small-box bg-aqua">
 				<div class="inner">
@@ -123,10 +123,10 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				</div>
 
 			</div>
-		</div>
+		</div> -->
 		<!-- ./col -->
 
-		<div class="col-lg-3 col-xs-6">
+		<!-- <div class="col-lg-3 col-xs-6">
 
 			<div class="small-box bg-orange">
 				<div class="inner">
@@ -139,7 +139,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				</div>
 
 			</div>
-		</div>
+		</div> -->
 
 		<div class="col-lg-3 col-xs-6">
 
@@ -147,7 +147,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				<div class="inner">
 					<h3><?php echo $total_customers; ?></h3>
 
-					<p>Active Customers</p>
+					<p>Customer Aktif</p>
 				</div>
 				<div class="icon">
 					<i class="ionicons ion-person-stalker"></i>
@@ -156,7 +156,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 			</div>
 		</div>
 
-		<div class="col-lg-3 col-xs-6">
+		<!-- <div class="col-lg-3 col-xs-6">
 
 			<div class="small-box bg-yellow">
 				<div class="inner">
@@ -169,9 +169,9 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				</div>
 
 			</div>
-		</div>
+		</div> -->
 
-		<div class="col-lg-3 col-xs-6">
+		<!--<div class="col-lg-3 col-xs-6">
 
 			<div class="small-box bg-teal">
 				<div class="inner">
@@ -184,7 +184,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				</div>
 
 			</div>
-		</div>
+		</div>-->
 
 		<div class="col-lg-3 col-xs-6">
 
