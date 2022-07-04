@@ -285,16 +285,20 @@ foreach ($result as $row) {
 						?>
 
 						<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_18; ?> (<?php echo LANG_VALUE_1; ?><?php
-																																			$statement = $pdo->prepare("SELECT * FROM tbl_cart WHERE cust_id=?");
-																																			$statement->execute(array($_SESSION['customer']['cust_id']));
-																																			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-																																			if ($result) {
-																																				$totalkeranjang = 0;
-																																				foreach ($result as $row) {
-																																					$row_total_price = $row['cart_p_current_price'] * $row['cart_p_qty'];
-																																					$totalkeranjang += $row_total_price;
+																																			if ($_SESSION['is_login'] == true) {
+																																				$statement = $pdo->prepare("SELECT * FROM tbl_cart WHERE cust_id=?");
+																																				$statement->execute(array($_SESSION['customer']['cust_id']));
+																																				$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+																																				if ($result) {
+																																					$totalkeranjang = 0;
+																																					foreach ($result as $row) {
+																																						$row_total_price = $row['cart_p_current_price'] * $row['cart_p_qty'];
+																																						$totalkeranjang += $row_total_price;
+																																					}
+																																					echo number_format($totalkeranjang);
+																																				} else {
+																																					echo '0.00';
 																																				}
-																																				echo number_format($totalkeranjang);
 																																			} else {
 																																				echo '0.00';
 																																			}
