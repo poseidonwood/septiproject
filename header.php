@@ -2,6 +2,9 @@
 <?php
 ob_start();
 session_start();
+if (!isset($_SESSION['is_login'])) {
+	$_SESSION['is_login'] = false;
+}
 include("admin/inc/config.php");
 include("admin/inc/functions.php");
 include("admin/inc/CSRF_Protect.php");
@@ -236,9 +239,9 @@ foreach ($result as $row) {
 
 	<?php echo $after_body; ?>
 
-<div id="preloader">
-	<div id="status"></div>
-</div>
+	<!-- <div id="preloader">
+		<div id="status"></div>
+	</div> -->
 
 	<!-- top bar -->
 	<div class="top">
@@ -249,24 +252,6 @@ foreach ($result as $row) {
 						<ul>
 							<li><i class="fa fa-phone"></i> <?php echo $contact_phone; ?></li>
 							<li><i class="fa fa-envelope-o"></i> <?php echo $contact_email; ?></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-6 col-xs-12">
-					<div class="right">
-						<ul>
-							<?php
-							$statement = $pdo->prepare("SELECT * FROM tbl_social");
-							$statement->execute();
-							$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-							foreach ($result as $row) {
-							?>
-								<?php if ($row['social_url'] != '') : ?>
-									<li><a href="<?php echo $row['social_url']; ?>"><i class="<?php echo $row['social_icon']; ?>"></i></a></li>
-								<?php endif; ?>
-							<?php
-							}
-							?>
 						</ul>
 					</div>
 				</div>
@@ -300,23 +285,16 @@ foreach ($result as $row) {
 						?>
 
 						<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_18; ?> (<?php echo LANG_VALUE_1; ?><?php
-																																			if (isset($_SESSION['cart_p_id'])) {
-																																				$table_total_price = 0;
-																																				$i = 0;
-																																				foreach ($_SESSION['cart_p_qty'] as $key => $value) {
-																																					$i++;
-																																					$arr_cart_p_qty[$i] = $value;
+																																			$statement = $pdo->prepare("SELECT * FROM tbl_cart WHERE cust_id=?");
+																																			$statement->execute(array($_SESSION['customer']['cust_id']));
+																																			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+																																			if ($result) {
+																																				$totalkeranjang = 0;
+																																				foreach ($result as $row) {
+																																					$row_total_price = $row['cart_p_current_price'] * $row['cart_p_qty'];
+																																					$totalkeranjang += $row_total_price;
 																																				}
-																																				$i = 0;
-																																				foreach ($_SESSION['cart_p_current_price'] as $key => $value) {
-																																					$i++;
-																																					$arr_cart_p_current_price[$i] = $value;
-																																				}
-																																				for ($i = 1; $i <= count($arr_cart_p_qty); $i++) {
-																																					$row_total_price = $arr_cart_p_current_price[$i] * $arr_cart_p_qty[$i];
-																																					$table_total_price = $table_total_price + $row_total_price;
-																																				}
-																																				echo $table_total_price;
+																																				echo number_format($totalkeranjang);
 																																			} else {
 																																				echo '0.00';
 																																			}

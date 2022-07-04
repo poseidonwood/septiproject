@@ -116,7 +116,6 @@ if ($tot_rating == 0) {
 }
 
 if (isset($_POST['form_add_to_cart'])) {
-
     // getting the currect stock of this product
     $statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
     $statement->execute(array($_REQUEST['id']));
@@ -132,102 +131,150 @@ if (isset($_POST['form_add_to_cart'])) {
         </script>
 <?php
     else :
-        if (isset($_SESSION['cart_p_id'])) {
-            $arr_cart_p_id = array();
-            $arr_cart_size_id = array();
-            $arr_cart_color_id = array();
-            $arr_cart_p_qty = array();
-            $arr_cart_p_current_price = array();
+        $statement = $pdo->prepare("SELECT * FROM `tbl_cart` WHERE `cart_p_id` = ? AND `cust_id` =?");
+        $statement->execute(array($_REQUEST['id'], $_SESSION['customer']['cust_id']));
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        if (count($result) > 0) {
+            // GENERAL TOOLS
+            // ABOUT US
+            // {"id":"104","size_id":"2","p_qty":"1","p_current_price":"10000","p_name":"Dummy Product","p_featured_photo":"product-featured-104.png","form_add_to_cart":"Tambah ke Keranjang"}
 
-            $i = 0;
-            foreach ($_SESSION['cart_p_id'] as $key => $value) {
-                $i++;
-                $arr_cart_p_id[$i] = $value;
+            foreach ($result as $row) {
+                $current_qty = $row['cart_p_qty'];
+                $final_quantity = $_POST['p_qty'] + $current_qty;
+                $statement = $pdo->prepare("UPDATE tbl_cart SET cart_p_qty=? WHERE cart_p_id=? AND cust_id = ?");
+                $statement->execute(array($final_quantity, $row['cart_p_id'], $_SESSION['customer']['cust_id']));
+
+                $current_qty = $_POST['p_qty'];
+                $final_quantity = $current_p_qty - $current_qty;
+                $statement = $pdo->prepare("UPDATE tbl_product SET p_qty=? WHERE p_id=?");
+                $statement->execute(array($final_quantity, $_REQUEST['id']));
+                $success_message1 = 'Product Berhasil ditambahkan';
             }
+            // $arr_cart_p_id = array();
+            // $arr_cart_size_id = array();
+            // $arr_cart_color_id = array();
+            // $arr_cart_p_qty = array();
+            // $arr_cart_p_current_price = array();
 
-            $i = 0;
-            foreach ($_SESSION['cart_size_id'] as $key => $value) {
-                $i++;
-                $arr_cart_size_id[$i] = $value;
-            }
+            // $i = 0;
+            // foreach ($_SESSION['cart_p_id'] as $key => $value) {
+            //     $i++;
+            //     $arr_cart_p_id[$i] = $value;
+            // }
 
-            $i = 0;
-            foreach ($_SESSION['cart_color_id'] as $key => $value) {
-                $i++;
-                $arr_cart_color_id[$i] = $value;
-            }
+            // $i = 0;
+            // foreach ($_SESSION['cart_size_id'] as $key => $value) {
+            //     $i++;
+            //     $arr_cart_size_id[$i] = $value;
+            // }
 
-
-            $added = 0;
-            if (!isset($_POST['size_id'])) {
-                $size_id = 0;
-            } else {
-                $size_id = $_POST['size_id'];
-            }
-            if (!isset($_POST['color_id'])) {
-                $color_id = 0;
-            } else {
-                $color_id = $_POST['color_id'];
-            }
-            for ($i = 1; $i <= count($arr_cart_p_id); $i++) {
-                if (($arr_cart_p_id[$i] == $_REQUEST['id']) && ($arr_cart_size_id[$i] == $size_id) && ($arr_cart_color_id[$i] == $color_id)) {
-                    $added = 1;
-                    break;
-                }
-            }
-            if ($added == 1) {
-                $error_message1 = 'This product is already added to the shopping cart.';
-            } else {
-
-                $i = 0;
-                foreach ($_SESSION['cart_p_id'] as $key => $res) {
-                    $i++;
-                }
-                $new_key = $i + 1;
-
-                if (isset($_POST['size_id'])) {
-
-                    $size_id = $_POST['size_id'];
-
-                    $statement = $pdo->prepare("SELECT * FROM tbl_size WHERE size_id=?");
-                    $statement->execute(array($size_id));
-                    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($result as $row) {
-                        $size_name = $row['size_name'];
-                    }
-                } else {
-                    $size_id = 0;
-                    $size_name = '';
-                }
-
-                if (isset($_POST['color_id'])) {
-                    $color_id = $_POST['color_id'];
-                    $statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=?");
-                    $statement->execute(array($color_id));
-                    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($result as $row) {
-                        $color_name = $row['color_name'];
-                    }
-                } else {
-                    $color_id = 0;
-                    $color_name = '';
-                }
+            // $i = 0;
+            // foreach ($_SESSION['cart_color_id'] as $key => $value) {
+            //     $i++;
+            //     $arr_cart_color_id[$i] = $value;
+            // }
 
 
-                $_SESSION['cart_p_id'][$new_key] = $_REQUEST['id'];
-                $_SESSION['cart_size_id'][$new_key] = $size_id;
-                $_SESSION['cart_size_name'][$new_key] = $size_name;
-                $_SESSION['cart_color_id'][$new_key] = $color_id;
-                $_SESSION['cart_color_name'][$new_key] = $color_name;
-                $_SESSION['cart_p_qty'][$new_key] = $_POST['p_qty'];
-                $_SESSION['cart_p_current_price'][$new_key] = $_POST['p_current_price'];
-                $_SESSION['cart_p_name'][$new_key] = $_POST['p_name'];
-                $_SESSION['cart_p_featured_photo'][$new_key] = $_POST['p_featured_photo'];
+            // $added = 0;
+            // if (!isset($_POST['size_id'])) {
+            //     $size_id = 0;
+            // } else {
+            //     $size_id = $_POST['size_id'];
+            // }
+            // if (!isset($_POST['color_id'])) {
+            //     $color_id = 0;
+            // } else {
+            //     $color_id = $_POST['color_id'];
+            // }
+            // for ($i = 1; $i <= count($arr_cart_p_id); $i++) {
+            //     if (($arr_cart_p_id[$i] == $_REQUEST['id']) && ($arr_cart_size_id[$i] == $size_id) && ($arr_cart_color_id[$i] == $color_id)) {
+            //         $added = 1;
+            //         break;
+            //     }
+            // }
+            // if ($added == 1) {
+            //     $error_message1 = 'This product is already added to the shopping cart.';
+            // } else {
+            //     $i = 0;
+            //     foreach ($_SESSION['cart_p_id'] as $key => $res) {
+            //         $i++;
+            //     }
+            //     $new_key = $i + 1;
 
-                $success_message1 = 'Product is added to the cart successfully!';
-            }
+            //     if (isset($_POST['size_id'])) {
+
+            //         $size_id = $_POST['size_id'];
+
+            //         $statement = $pdo->prepare("SELECT * FROM tbl_size WHERE size_id=?");
+            //         $statement->execute(array($size_id));
+            //         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            //         foreach ($result as $row) {
+            //             $size_name = $row['size_name'];
+            //         }
+            //     } else {
+            //         $size_id = 0;
+            //         $size_name = '';
+            //     }
+
+            //     if (isset($_POST['color_id'])) {
+            //         $color_id = $_POST['color_id'];
+            //         $statement = $pdo->prepare("SELECT * FROM tbl_color WHERE color_id=?");
+            //         $statement->execute(array($color_id));
+            //         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            //         foreach ($result as $row) {
+            //             $color_name = $row['color_name'];
+            //         }
+            //     } else {
+            //         $color_id = 0;
+            //         $color_name = '';
+            //     }
+
+
+            //     $_SESSION['cart_p_id'][$new_key] = $_REQUEST['id'];
+            //     $_SESSION['cart_size_id'][$new_key] = $size_id;
+            //     $_SESSION['cart_size_name'][$new_key] = $size_name;
+            //     $_SESSION['cart_color_id'][$new_key] = $color_id;
+            //     $_SESSION['cart_color_name'][$new_key] = $color_name;
+            //     $_SESSION['cart_p_qty'][$new_key] = $_POST['p_qty'];
+            //     $_SESSION['cart_p_current_price'][$new_key] = $_POST['p_current_price'];
+            //     $_SESSION['cart_p_name'][$new_key] = $_POST['p_name'];
+            //     $_SESSION['cart_p_featured_photo'][$new_key] = $_POST['p_featured_photo'];
+            //     $success_message1 = '{1} Product is added to the cart successfully!';
+            //     $statement = $pdo->prepare("INSERT INTO tbl_cart (
+            //                 id,
+            //                 cart_p_id,
+            //                 cart_size_id,
+            //                 cart_size_name,
+            //                 cart_color_id,
+            //                 cart_color_name,
+            //                 cart_p_qty,
+            //                 cart_p_current_price,
+            //                 cart_p_name,
+            //                 cart_p_featured_photo,
+            //                 cust_id
+            //                 ) 
+            //                 VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            //     $sql = $statement->execute(array(
+            //         NULL,
+            //         $_REQUEST['id'],
+            //         $size_id,
+            //         $size_name,
+            //         $color_id,
+            //         $color_name,
+            //         $_POST['p_qty'],
+            //         $_POST['p_current_price'],
+            //         $_POST['p_name'],
+            //         $_POST['p_featured_photo'],
+            //         $_SESSION['customer']['cust_id']
+            //     ));
+            // Update the stock
+            // $current_qty = $_POST['p_qty'];
+            // $final_quantity = $current_p_qty - $current_qty;
+            // $statement = $pdo->prepare("UPDATE tbl_product SET p_qty=? WHERE p_id=?");
+            // $statement->execute(array($final_quantity, $_REQUEST['id']));
+            // }
         } else {
-
             if (isset($_POST['size_id'])) {
 
                 $size_id = $_POST['size_id'];
@@ -266,11 +313,43 @@ if (isset($_POST['form_add_to_cart'])) {
             $_SESSION['cart_p_current_price'][1] = $_POST['p_current_price'];
             $_SESSION['cart_p_name'][1] = $_POST['p_name'];
             $_SESSION['cart_p_featured_photo'][1] = $_POST['p_featured_photo'];
-
-            $success_message1 = 'Product is added to the cart successfully!';
+            $success_message1 = 'Product Berhasil ditambahkan';
+            $statement = $pdo->prepare("INSERT INTO tbl_cart (
+	                        id,
+                            cart_p_id,
+	                        cart_size_id,
+                            cart_size_name,
+                            cart_color_id,
+                            cart_color_name,
+                            cart_p_qty,
+                            cart_p_current_price,
+                            cart_p_name,
+                            cart_p_featured_photo,
+	                        cust_id
+	                        ) 
+	                        VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            $sql = $statement->execute(array(
+                NULL,
+                $_REQUEST['id'],
+                $size_id,
+                $size_name,
+                $color_id,
+                $color_name,
+                $_POST['p_qty'],
+                $_POST['p_current_price'],
+                $_POST['p_name'],
+                $_POST['p_featured_photo'],
+                $_SESSION['customer']['cust_id']
+            ));
+            // Update the stock
+            $current_qty = $_POST['p_qty'];
+            $final_quantity = $current_p_qty - $current_qty;
+            $statement = $pdo->prepare("UPDATE tbl_product SET p_qty=? WHERE p_id=?");
+            $statement->execute(array($final_quantity, $_REQUEST['id']));
         }
     endif;
 }
+
 ?>
 
 <?php
@@ -278,8 +357,9 @@ if ($error_message1 != '') {
     echo "<script>alert('" . $error_message1 . "')</script>";
 }
 if ($success_message1 != '') {
-    echo "<script>alert('" . $success_message1 . "')</script>";
-    header('location: product.php?id=' . $_REQUEST['id']);
+    echo "<script>alert('" . $success_message1 . "')
+    window.location.href = 'product.php?id={$_REQUEST['id']}'
+    </script>";
 }
 ?>
 
@@ -465,10 +545,16 @@ if ($success_message1 != '') {
                                 <input type="hidden" name="p_current_price" value="<?php echo $p_current_price; ?>">
                                 <input type="hidden" name="p_name" value="<?php echo $p_name; ?>">
                                 <input type="hidden" name="p_featured_photo" value="<?php echo $p_featured_photo; ?>">
-                                
+
 
                                 <div class="btn-cart btn-cart1">
-                                    <input type="submit" value="<?php echo LANG_VALUE_154; ?>" name="form_add_to_cart">
+                                    <!-- <input type="submit" value="<?php echo LANG_VALUE_154; ?>" name="form_add_to_cart"> -->
+                                    <?php
+                                    if ($_SESSION['is_login'] !== false) { ?>
+                                        <input type="submit" value="<?php echo LANG_VALUE_154; ?>" name="form_add_to_cart">
+                                    <?php } else { ?>
+                                        <a href="login.php" class="btn btn-md btn-warning">Login dahulu untuk tambah keranjang</a>
+                                    <?php } ?>
                                 </div>
                             </form>
                             <!-- <div class="share">

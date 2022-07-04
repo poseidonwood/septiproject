@@ -122,7 +122,7 @@ if ($success_message != '') {
 
 <section class="content-header">
     <div class="content-header-left">
-        <h1>View Orders</h1>
+        <h1>View Cart User</h1>
     </div>
 </section>
 
