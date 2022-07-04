@@ -23,6 +23,8 @@ foreach ($result as $row) {
 	$favicon = $row['favicon'];
 	$timer_setting = $row['timer_cart'];
 }
+echo json_encode($timer_setting);
+exit;
 $statement = $pdo->prepare("SELECT *from tbl_cart WHERE cust_id=?");
 $statement->execute(array($_SESSION['customer']['cust_id']));
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
