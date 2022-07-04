@@ -37,7 +37,31 @@ foreach ($result as $row) {
 	$meta_description_home = $row['meta_description_home'];
 	$before_head = $row['before_head'];
 	$after_body = $row['after_body'];
+	$timer_setting = $row['timer_cart'];
 }
+$statement = $pdo->prepare("SELECT *from tbl_cart WHERE cust_id=?");
+$statement->execute(array($_SESSION['customer']['cust_id']));
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+date_default_timezone_set('Asia/Jakarta');
+$datenow = strtotime(date('Y-m-d'));
+foreach ($result as $row) {
+	$expireddate = date($row['created_at'], strtotime("+{$timer_setting} minutes"));
+	if ($datenow > strtotime($expireddate)) {
+		$statement = $pdo->prepare("SELECT *from tbl_product WHERE p_id=?");
+		$statement->execute(array($row['cart_p_id']));
+		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($result as $row) {
+			$currentstok = $row['p_qty'];
+		}
+		$statement = $pdo->prepare("DELETE FROM tbl_cart WHERE id=?");
+		$statement->execute(array($row['id']));
+		$final_quantity = $currentstok + $row['cart_p_qty'];
+		$statement = $pdo->prepare("UPDATE tbl_product SET p_qty=? WHERE p_id=?");
+		$statement->execute(array($final_quantity, $row['cart_p_id']));
+	}
+}
+
+
 
 // Checking the order table and removing the pending transaction that are 24 hours+ old. Very important
 $current_date_time = date('Y-m-d H:i:s');
