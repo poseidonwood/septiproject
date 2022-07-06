@@ -229,13 +229,13 @@ if (isset($_POST['form1'])) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Old Price <br><span style="font-size:10px;font-weight:normal;">(In USD)</span></label>
+							<label for="" class="col-sm-3 control-label">Old Price <br><span style="font-size:10px;font-weight:normal;"></span></label>
 							<div class="col-sm-4">
 								<input type="text" name="p_old_price" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Current Price <span>*</span><br><span style="font-size:10px;font-weight:normal;">(In USD)</span></label>
+							<label for="" class="col-sm-3 control-label">Current Price <span>*</span><br><span style="font-size:10px;font-weight:normal;"></span></label>
 							<div class="col-sm-4">
 								<input type="text" name="p_current_price" class="form-control">
 							</div>
@@ -312,7 +312,7 @@ if (isset($_POST['form1'])) {
 								<textarea name="p_description" class="form-control" cols="30" rows="10" id="editor1"></textarea>
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="" class="col-sm-3 control-label">Short Description</label>
 							<div class="col-sm-8">
 								<textarea name="p_short_description" class="form-control" cols="30" rows="10" id="editor2"></textarea>
@@ -323,7 +323,10 @@ if (isset($_POST['form1'])) {
 							<div class="col-sm-8">
 								<textarea name="p_feature" class="form-control" cols="30" rows="10" id="editor3"></textarea>
 							</div>
-						</div>
+						</div> -->
+						<input type="hidden" name="p_short_description" class="form-control" value="">
+						<input type="hidden" name="p_feature" class="form-control" value="">
+
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label">Conditions</label>
 							<div class="col-sm-8">
