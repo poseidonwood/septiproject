@@ -39,31 +39,31 @@ foreach ($result as $row) {
 	$after_body = $row['after_body'];
 	$timer_setting = $row['timer_cart'];
 }
-
-$statement = $pdo->prepare("SELECT *from tbl_cart WHERE cust_id=? ORDER BY created_at DESC");
-$statement->execute(array($_SESSION['customer']['cust_id']));
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-date_default_timezone_set('Asia/Jakarta');
-$datenow = strtotime(date('Y-m-d H:i:s'));
-foreach ($result as $row) {
-	$expireddate = date("Y-m-d H:i:s",strtotime(date("{$row['created_at']}")." +{$timer_setting} minutes"));
-	// echo $expireddate; exit;
-	if ($datenow > strtotime($expireddate)) {
-		
-		$statement = $pdo->prepare("SELECT *from tbl_product WHERE p_id=?");
-		$statement->execute(array($row['cart_p_id']));
-		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-		foreach ($result as $rows) {
-			$currentstok = $rows['p_qty'];
+if($_SESSION['is_login'] == true){
+	$statement = $pdo->prepare("SELECT *from tbl_cart WHERE cust_id=? ORDER BY created_at DESC");
+	$statement->execute(array($_SESSION['customer']['cust_id']));
+	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+	date_default_timezone_set('Asia/Jakarta');
+	$datenow = strtotime(date('Y-m-d H:i:s'));
+	foreach ($result as $row) {
+		$expireddate = date("Y-m-d H:i:s",strtotime(date("{$row['created_at']}")." +{$timer_setting} minutes"));
+		// echo $expireddate; exit;
+		if ($datenow > strtotime($expireddate)) {
+			
+			$statement = $pdo->prepare("SELECT *from tbl_product WHERE p_id=?");
+			$statement->execute(array($row['cart_p_id']));
+			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+			foreach ($result as $rows) {
+				$currentstok = $rows['p_qty'];
+			}
+			$statement = $pdo->prepare("DELETE FROM tbl_cart WHERE id=?");
+			$statement->execute(array($row['id']));
+			$final_quantity = $currentstok + $row['cart_p_qty'];
+			$statement = $pdo->prepare("UPDATE tbl_product SET p_qty=? WHERE p_id=?");
+			$statement->execute(array($final_quantity, $row['cart_p_id']));
 		}
-		$statement = $pdo->prepare("DELETE FROM tbl_cart WHERE id=?");
-		$statement->execute(array($row['id']));
-		$final_quantity = $currentstok + $row['cart_p_qty'];
-		$statement = $pdo->prepare("UPDATE tbl_product SET p_qty=? WHERE p_id=?");
-		$statement->execute(array($final_quantity, $row['cart_p_id']));
 	}
 }
-
 
 
 // Checking the order table and removing the pending transaction that are 24 hours+ old. Very important
