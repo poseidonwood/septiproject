@@ -87,6 +87,12 @@ if (isset($_POST['form1'])) {
                     <?php echo '<h2 class="text-center">Cart is Empty!!</h2></br>'; ?>
                     <?php echo '<h4 class="text-center">Add products to the cart in order to view it here.</h4>'; ?>
                 <?php else : ?>
+                    <?php
+                    if($_SESSION['is_login'] == false){
+                     echo '<h2 class="text-center">Anda belum login!!</h2></br>';
+                     echo '<h4 class="text-center">Pastikan anda login terlebih dahulu .</h4>';
+                    }else{
+                    ?>
                     <form action="" method="post">
                         <?php $csrf->echoInputField(); ?>
                         <div class="cart">
@@ -152,6 +158,7 @@ if (isset($_POST['form1'])) {
                             </ul>
                         </div>
                     </form>
+                    <?php }?>
                 <?php endif; ?>
 
 
