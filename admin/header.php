@@ -153,14 +153,14 @@ foreach ($result as $row) {
 										} ?>">
 						<a href="#">
 							<i class="fa fa-sticky-note"></i>
-							<span>Order & Cart Management</span>
+							<span>Order Management</span>
 							<span class="pull-right-container">
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
 						</a>
 						<ul class="treeview-menu">
 							<li><a href="order.php"><i class="fa fa-circle-o"></i> Order Management</a></li>
-							<li><a href="cart.php"><i class="fa fa-circle-o"></i> Cart Management</a></li>
+							<!-- <li><a href="cart.php"><i class="fa fa-circle-o"></i> Cart Management</a></li> -->
 						</ul>
 					</li>
 					<li class="treeview <?php if (($cur_page == 'slider.php')) {
