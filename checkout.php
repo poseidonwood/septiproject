@@ -101,15 +101,16 @@ if (!isset($_SESSION['cart_p_id'])) {
                                     }
                                 }
                                 ?>
-                                <tr>
+                                <!-- <tr>
                                     <td colspan="7" class="total-text"><?php echo LANG_VALUE_84; ?></td>
-                                    <td class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $shipping_cost; ?></td>
-                                </tr>
+                                    <td class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $shipping_cost; ?></td> 
+                                </tr> -->
                                 <tr>
                                     <th colspan="7" class="total-text"><?php echo LANG_VALUE_82; ?></th>
                                     <th class="total-amount">
                                         <?php
-                                        $final_total = $totalprice + $shipping_cost;
+                                        // $final_total = $totalprice + $shipping_cost;
+                                        $final_total = $totalprice;
                                         ?>
                                         <?php echo LANG_VALUE_1; ?><?php echo number_format($final_total); ?>
                                     </th>
