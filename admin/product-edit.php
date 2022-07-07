@@ -362,13 +362,13 @@ foreach ($result as $row) {
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Old Price<br><span style="font-size:10px;font-weight:normal;">(In USD)</span></label>
+							<label for="" class="col-sm-3 control-label">Old Price<br><span style="font-size:10px;font-weight:normal;"></span></label>
 							<div class="col-sm-4">
 								<input type="text" name="p_old_price" class="form-control" value="<?php echo $p_old_price; ?>">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Current Price <span>*</span><br><span style="font-size:10px;font-weight:normal;">(In USD)</span></label>
+							<label for="" class="col-sm-3 control-label">Current Price <span>*</span><br><span style="font-size:10px;font-weight:normal;"></span></label>
 							<div class="col-sm-4">
 								<input type="text" name="p_current_price" class="form-control" value="<?php echo $p_current_price; ?>">
 							</div>
@@ -404,7 +404,7 @@ foreach ($result as $row) {
 								</select>
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="" class="col-sm-3 control-label">Select Color</label>
 							<div class="col-sm-4">
 								<select name="color[]" class="form-control select2" multiple="multiple">
@@ -428,7 +428,7 @@ foreach ($result as $row) {
 									?>
 								</select>
 							</div>
-						</div>
+						</div> -->
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label">Existing Featured Photo</label>
 							<div class="col-sm-4" style="padding-top:4px;">
@@ -442,7 +442,7 @@ foreach ($result as $row) {
 								<input type="file" name="p_featured_photo">
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="" class="col-sm-3 control-label">Other Photos</label>
 							<div class="col-sm-4" style="padding-top:4px;">
 								<table id="ProductTable" style="width:100%;">
@@ -470,19 +470,19 @@ foreach ($result as $row) {
 							<div class="col-sm-2">
 								<input type="button" id="btnAddNew" value="Add Item" style="margin-top: 5px;margin-bottom:10px;border:0;color: #fff;font-size: 14px;border-radius:3px;" class="btn btn-warning btn-xs">
 							</div>
-						</div>
+						</div> -->
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label">Description</label>
 							<div class="col-sm-8">
 								<textarea name="p_description" class="form-control" cols="30" rows="10" id="editor1"><?php echo $p_description; ?></textarea>
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="" class="col-sm-3 control-label">Short Description</label>
 							<div class="col-sm-8">
 								<textarea name="p_short_description" class="form-control" cols="30" rows="10" id="editor1"><?php echo $p_short_description; ?></textarea>
 							</div>
-						</div>
+						</div> -->
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label">Features</label>
 							<div class="col-sm-8">
