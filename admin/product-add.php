@@ -263,7 +263,8 @@ if (isset($_POST['form1'])) {
 								</select>
 							</div>
 						</div>
-						<div class="form-group">
+						<input type="hidden" name='color'>
+						<!-- <div class="form-group">
 							<label for="" class="col-sm-3 control-label">Select Color</label>
 							<div class="col-sm-4">
 								<select name="color[]" class="form-control select2" multiple="multiple">
@@ -279,14 +280,14 @@ if (isset($_POST['form1'])) {
 									?>
 								</select>
 							</div>
-						</div>
+						</div> -->
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label">Featured Photo <span>*</span></label>
 							<div class="col-sm-4" style="padding-top:4px;">
 								<input type="file" name="p_featured_photo">
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="" class="col-sm-3 control-label">Other Photos</label>
 							<div class="col-sm-4" style="padding-top:4px;">
 								<table id="ProductTable" style="width:100%;">
@@ -305,7 +306,7 @@ if (isset($_POST['form1'])) {
 							<div class="col-sm-2">
 								<input type="button" id="btnAddNew" value="Add Item" style="margin-top: 5px;margin-bottom:10px;border:0;color: #fff;font-size: 14px;border-radius:3px;" class="btn btn-warning btn-xs">
 							</div>
-						</div>
+						</div> -->
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label">Description</label>
 							<div class="col-sm-8">
