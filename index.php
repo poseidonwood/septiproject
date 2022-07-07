@@ -86,13 +86,13 @@ foreach ($result as $row) {
                                                         } elseif ($row['position'] == 'Right') {
                                                             echo 'fadeInRight';
                                                         } ?>"><?php echo nl2br($row['content']); ?></p>
-                            <a href="<?php echo $row['button_url']; ?>" target="_blank" class="btn btn-primary" data-animation="animated <?php if ($row['position'] == 'Left') {
+                            <!-- <a href="<?php echo $row['button_url']; ?>" target="_blank" class="btn btn-primary" data-animation="animated <?php if ($row['position'] == 'Left') {
                                                                                                                                                 echo 'fadeInLeft';
                                                                                                                                             } elseif ($row['position'] == 'Center') {
                                                                                                                                                 echo 'fadeInDown';
                                                                                                                                             } elseif ($row['position'] == 'Right') {
                                                                                                                                                 echo 'fadeInRight';
-                                                                                                                                            } ?>"><?php echo $row['button_text']; ?></a>
+                                                                                                                                            } ?>"><?php echo $row['button_text']; ?></a> -->
                         </div>
                     </div>
                 </div>
