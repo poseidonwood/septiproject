@@ -142,9 +142,11 @@ if (isset($_POST['form1'])) {
 		}
 
 		if (isset($_POST['color'])) {
-			foreach ($_POST['color'] as $value) {
-				$statement = $pdo->prepare("INSERT INTO tbl_product_color (color_id,p_id) VALUES (?,?)");
-				$statement->execute(array($value, $ai_id));
+			if(is_array($_POST['color'])){
+				foreach ($_POST['color'] as $value) {
+					$statement = $pdo->prepare("INSERT INTO tbl_product_color (color_id,p_id) VALUES (?,?)");
+					$statement->execute(array($value, $ai_id));
+				}
 			}
 		}
 
